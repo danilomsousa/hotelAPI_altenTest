@@ -1,61 +1,58 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace HotelApi
 {
-    public static class ReservationService
+    public class ReservationService
     {
-        static List<Reservation> Reservations { get; }
-        static int nextId = 3;
+        private List<Reservation> Reservations { get {return _context.Reservations.ToList();} }
+        private ReservationDbContext _context; 
     
-        static ReservationService()
-        {
-            Reservations = new List<Reservation>
-            {
-                new Reservation { Id = 1, StartDate = Convert.ToDateTime("28/11/2022"), EndDate = Convert.ToDateTime("30/11/2022"), GuestName = "Danilo" },
-                new Reservation { Id = 2, StartDate = Convert.ToDateTime("05/12/2022"), EndDate = Convert.ToDateTime("06/12/2022"), GuestName = "Bruna" }
-            };
+        public ReservationService(ReservationDbContext context)
+        {            
+            _context = context;  
+            if (!_context.Reservations.Any())   
+            {  
+                _context.Reservations.Add(new Reservation   
+                        { StartDate = Convert.ToDateTime("28/11/2022"), EndDate = Convert.ToDateTime("30/11/2022"), GuestName = "Danilo"});  
+                _context.Reservations.Add(new Reservation   
+                        { StartDate = Convert.ToDateTime("05/12/2022"), EndDate = Convert.ToDateTime("06/12/2022"), GuestName = "Bruna"}); 
+                _context.SaveChanges();   
+            } 
         }
 
-        public static List<Reservation> GetAll() => Reservations;
+        public List<Reservation> GetAll() => Reservations;
 
-        public static Reservation Get(int id) => Reservations.FirstOrDefault(p => p.Id == id);
+        public Reservation Get(int id) => Reservations.FirstOrDefault(p => p.Id == id);
 
         /// <summary>
         /// This method adds a new reservation.
         /// </summary>
-        public static void Add(Reservation reservation)
+        public void Add(Reservation reservation)
         {           
-            reservation.Id = nextId++;
-            Reservations.Add(reservation);
+            _context.Reservations.Add(reservation);
+            _context.SaveChanges();
         }
 
         /// <summary>
         /// This method deletes a reservation based on the reservation id.
         /// </summary>
-        public static void Delete(int id)
+        public void Delete(int id)
         {
             var reservation = Get(id);
             if(reservation is null)
                 return;
 
-            Reservations.Remove(reservation);
+            _context.Reservations.Remove(reservation);
+            _context.SaveChanges();
         }
-
-        /*public static void Update(Reservation reservation)
-        {
-            var index = Reservations.FindIndex(p => p.Id == reservation.Id);
-            if(index == -1)
-                return;
-
-            Reservations[index] = reservation;
-        }*/
-
+      
         /// <summary>
         /// This method generates a list of the booked dates.
         /// </summary>
-        public static List<DateTime> GetBookedDays(){
+        public List<DateTime> GetBookedDays(){
             List<DateTime> bookedDays = new List<DateTime>();
             foreach (var item in Reservations)
             {
@@ -69,11 +66,11 @@ namespace HotelApi
         /// <summary>
         /// This method generates a list of the available dates to booking.
         /// </summary>
-        public static List<DateTime> GetAvaliability(){
+        public List<DateTime> GetAvaliability(){
             IEnumerable<DateTime> allDates = Enumerable.Range(1, 30).Select(index => 
                                 DateTime.Now.AddDays(index).Date                
                             ).ToList();
-            
+                        
             return allDates.Except(GetBookedDays()).ToList();
         }
         
@@ -81,7 +78,7 @@ namespace HotelApi
         /// <summary>
         /// This method checks the rules for a valid reservation.
         /// </summary>
-        public static bool ValidateReservation(Reservation reservation, out String errorMessage){
+        public bool ValidateReservation(Reservation reservation, out String errorMessage){
             if(reservation.EndDate.Date < reservation.StartDate.Date){
                 errorMessage = "End of reservation should be before the Start!";
                 return false;
@@ -97,7 +94,7 @@ namespace HotelApi
         /// <summary>
         /// This method checks if the reservation dates are available for booking.
         /// </summary>
-        public static bool ValidateAvailability(Reservation reservation, out String errorMessage){            
+        public bool ValidateAvailability(Reservation reservation, out String errorMessage){            
             if(GetBookedDays().Contains(reservation.StartDate.Date)
             ||GetBookedDays().Contains(reservation.EndDate.Date)){
                 errorMessage = "Dates selected are already booked! Check the available dates.";

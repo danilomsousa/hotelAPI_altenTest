@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Microsoft.EntityFrameworkCore;
 
 namespace HotelApi.Controllers
 {
@@ -11,29 +12,29 @@ namespace HotelApi.Controllers
     [Route("[controller]")]
     public class BookingController : ControllerBase
     {      
-        private readonly ILogger<BookingController> _logger;
-
-        public BookingController(ILogger<BookingController> logger)
+        private ReservationService reservationService;
+        public BookingController(ReservationDbContext context)
         {
-            _logger = logger;
-        }
+            reservationService = new ReservationService(context);
+        }         
+
        
         [HttpGet]
         public ActionResult<List<String>> GetAvaliability()
         {    
-            return ReservationService.GetAvaliability().Select(index => 
+            return reservationService.GetAvaliability().Select(index => 
                 index.ToString("dd/MM/yyyy")                
             )
-            .ToList();     
+            .ToList();               
         }
 
         [HttpPost]
         public IActionResult Create(Reservation reservation)
         {
             String errorMessage = "";
-            if(ReservationService.ValidateReservation(reservation, out errorMessage)
-            && ReservationService.ValidateAvailability(reservation, out errorMessage)){
-                ReservationService.Add(reservation);
+            if(reservationService.ValidateReservation(reservation, out errorMessage)
+            && reservationService.ValidateAvailability(reservation, out errorMessage)){
+                reservationService.Add(reservation);
                 return CreatedAtAction(nameof(Create), new { id = reservation.Id }, reservation);
             }                               
             return BadRequest(errorMessage);
@@ -48,20 +49,20 @@ namespace HotelApi.Controllers
             if (id != reservation.Id)
                 return BadRequest();
                 
-            var existingReservation = ReservationService.Get(id);
+            var existingReservation = reservationService.Get(id);
             if(existingReservation is null)
                 return NotFound();
 
             String errorMessage = "";
-            if(ReservationService.ValidateReservation(reservation, out errorMessage)){
-                ReservationService.Delete(id);
-                if(ReservationService.ValidateAvailability(reservation, out errorMessage)){
-                    ReservationService.Add(reservation);  
+            if(reservationService.ValidateReservation(reservation, out errorMessage)){
+                reservationService.Delete(id);
+                if(reservationService.ValidateAvailability(reservation, out errorMessage)){
+                    reservationService.Add(reservation);  
                     return NoContent();         
                 }
                 else
                 {
-                   ReservationService.Add(existingReservation);  
+                   reservationService.Add(existingReservation);  
                 }                
             }
             return BadRequest(errorMessage);
@@ -70,12 +71,12 @@ namespace HotelApi.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            var reservation = ReservationService.Get(id);
+            var reservation = reservationService.Get(id);
         
             if (reservation is null)
                 return NotFound();
             
-            ReservationService.Delete(id);
+            reservationService.Delete(id);
         
             return NoContent();
         }

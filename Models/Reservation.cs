@@ -1,4 +1,5 @@
 using System;
+using Microsoft.EntityFrameworkCore;
 
 namespace HotelApi
 {
@@ -21,5 +22,11 @@ namespace HotelApi
                 return _daysCount + (EndDate.Date - StartDate.Date).Days;
             }             
         }
+    }
+
+    public class ReservationDbContext : DbContext
+    {
+        public ReservationDbContext(DbContextOptions context) : base(context) { }
+        public DbSet<Reservation> Reservations { get; set; }
     }
 }

@@ -11,6 +11,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace HotelApi
 {
@@ -25,7 +27,11 @@ namespace HotelApi
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
-        {
+        {           
+            //var connectionString = Configuration.GetConnectionString("Hotel") ?? "Data Source=Hotel.db";            
+            //services.AddSqlite<ReservationDbContext>(connectionString);
+
+            services.AddDbContext<ReservationDbContext>(context => context.UseInMemoryDatabase("Hotel"));
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -42,7 +48,7 @@ namespace HotelApi
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "HotelApi v1"));
-            }
+            }            
 
             app.UseHttpsRedirection();
 
@@ -54,6 +60,7 @@ namespace HotelApi
             {
                 endpoints.MapControllers();
             });
+
         }
     }
 }
