@@ -199,11 +199,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\danil\\OneDrive\\Documentos\\HotelAPI\\HotelApi\\HotelApi.csproj",
+      "projectUniqueName": "C:\\Users\\danil\\OneDrive\\Documentos\\HotelAPI\\HotelApi.csproj",
       "projectName": "HotelApi",
-      "projectPath": "C:\\Users\\danil\\OneDrive\\Documentos\\HotelAPI\\HotelApi\\HotelApi.csproj",
+      "projectPath": "C:\\Users\\danil\\OneDrive\\Documentos\\HotelAPI\\HotelApi.csproj",
       "packagesPath": "C:\\Users\\danil\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\danil\\OneDrive\\Documentos\\HotelAPI\\HotelApi\\obj\\",
+      "outputPath": "C:\\Users\\danil\\OneDrive\\Documentos\\HotelAPI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
