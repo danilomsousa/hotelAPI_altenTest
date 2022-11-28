@@ -24,6 +24,9 @@ namespace HotelApi
         }
     }
 
+    /// <summary>
+    /// This class holds the interaction to the Entity Framework.
+    /// </summary>
     public class ReservationDbContext : DbContext
     {
         public ReservationDbContext(DbContextOptions context) : base(context) { }

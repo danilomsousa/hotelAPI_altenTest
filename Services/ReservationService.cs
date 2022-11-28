@@ -12,15 +12,7 @@ namespace HotelApi
     
         public ReservationService(ReservationDbContext context)
         {            
-            _context = context;  
-            if (!_context.Reservations.Any())   
-            {  
-                _context.Reservations.Add(new Reservation   
-                        { StartDate = Convert.ToDateTime("28/11/2022"), EndDate = Convert.ToDateTime("30/11/2022"), GuestName = "Danilo"});  
-                _context.Reservations.Add(new Reservation   
-                        { StartDate = Convert.ToDateTime("05/12/2022"), EndDate = Convert.ToDateTime("06/12/2022"), GuestName = "Bruna"}); 
-                _context.SaveChanges();   
-            } 
+            _context = context;              
         }
 
         public List<Reservation> GetAll() => Reservations;

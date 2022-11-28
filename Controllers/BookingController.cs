@@ -20,6 +20,9 @@ namespace HotelApi.Controllers
 
        
         [HttpGet]
+        /// <summary>
+        /// This method gets all the dates available for booking.
+        /// </summary>
         public ActionResult<List<String>> GetAvaliability()
         {    
             return reservationService.GetAvaliability().Select(index => 
@@ -29,6 +32,9 @@ namespace HotelApi.Controllers
         }
 
         [HttpPost]
+        /// <summary>
+        /// This method creates a new reservation.
+        /// </summary>
         public IActionResult Create(Reservation reservation)
         {
             String errorMessage = "";
@@ -42,7 +48,7 @@ namespace HotelApi.Controllers
 
         [HttpPut("{id}")]
         /// <summary>
-        /// This method updates a reservation.
+        /// This method updates a reservation. Body id and put id should be the same
         /// </summary>
         public IActionResult Update(int id, Reservation reservation)
         {
@@ -69,6 +75,9 @@ namespace HotelApi.Controllers
         }
 
         [HttpDelete("{id}")]
+        /// <summary>
+        /// This method deletes a reservation.
+        /// </summary>
         public IActionResult Delete(int id)
         {
             var reservation = reservationService.Get(id);
