@@ -20,10 +20,10 @@ and can’t be reserved more than 30 days in advance.
 - To simplify the API is insecure.
 
 # Definition
-This project is a RestAPI and was developed using .net 6.0, its using EF to save the reservation information on SQLite database.
-Implements the CRUD methos on the BookingController class. 
-The docker was implemented to provide a cloud container to achieve the requirement: quality of service must be 99.99 to 100% => no downtime
-RestAPI can be call on: https://danilosousahotelapi.azurewebsites.net/booking
+This project is a RestAPI and was developed using .net 6.0, its using EF to save the reservation information on SQLite database. <br />
+Implements the CRUD methos on the BookingController class. <br />
+The docker was implemented to provide a cloud container to achieve the requirement: quality of service must be 99.99 to 100% => no downtime <br />
+RestAPI can be call on: https://danilosousahotelapi.azurewebsites.net/booking <br />
 
 # Run
 Running locally the solution can be tested using Swagger interface on https://localhost:5001/swagger/index.html.
