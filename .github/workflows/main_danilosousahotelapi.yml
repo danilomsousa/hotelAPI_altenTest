@@ -51,7 +51,7 @@ jobs:
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
-          app-name: 'danilosousahotelapi'
+          app-name: 'hotelapidaniloaltentest'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_E7E2580ACAA04F119A9178FBDA92B35B }}
           package: .
