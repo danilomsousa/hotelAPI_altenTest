@@ -14,7 +14,6 @@ C:\Users\danil\OneDrive\Documentos\HotelAPI\bin\Debug\net6.0\HotelApi.dll
 C:\Users\danil\OneDrive\Documentos\HotelAPI\bin\Debug\net6.0\HotelApi.pdb
 C:\Users\danil\OneDrive\Documentos\HotelAPI\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
 C:\Users\danil\OneDrive\Documentos\HotelAPI\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
-C:\Users\danil\OneDrive\Documentos\HotelAPI\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.InMemory.dll
 C:\Users\danil\OneDrive\Documentos\HotelAPI\bin\Debug\net6.0\Microsoft.OpenApi.dll
 C:\Users\danil\OneDrive\Documentos\HotelAPI\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\danil\OneDrive\Documentos\HotelAPI\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll

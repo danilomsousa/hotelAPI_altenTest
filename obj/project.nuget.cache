@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "1EYfXlWRsvTlBXVzYCD5t/NJKwfIBr5vQFg7BkMhFLkSfBxqkUuaqpnluF1FSKcO0QAeOGaQsdXk1pJ7ezMtLA==",
+  "dgSpecHash": "j6nRV+wQkUNCc29NPBRo9dYIuBSbh6hk2GQTkmT0m01QH9gTb9dAk6njhSRwihCJ1kmh+kTJem9K0c7DOHOBfw==",
   "success": true,
   "projectFilePath": "C:\\Users\\danil\\OneDrive\\Documentos\\HotelAPI\\HotelApi.csproj",
   "expectedPackageFiles": [
@@ -10,7 +10,6 @@
     "C:\\Users\\danil\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\6.0.0\\microsoft.entityframeworkcore.abstractions.6.0.0.nupkg.sha512",
     "C:\\Users\\danil\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\6.0.0\\microsoft.entityframeworkcore.analyzers.6.0.0.nupkg.sha512",
     "C:\\Users\\danil\\.nuget\\packages\\microsoft.entityframeworkcore.design\\6.0.0\\microsoft.entityframeworkcore.design.6.0.0.nupkg.sha512",
-    "C:\\Users\\danil\\.nuget\\packages\\microsoft.entityframeworkcore.inmemory\\6.0.0\\microsoft.entityframeworkcore.inmemory.6.0.0.nupkg.sha512",
     "C:\\Users\\danil\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\6.0.0\\microsoft.entityframeworkcore.relational.6.0.0.nupkg.sha512",
     "C:\\Users\\danil\\.nuget\\packages\\microsoft.entityframeworkcore.sqlite\\6.0.0\\microsoft.entityframeworkcore.sqlite.6.0.0.nupkg.sha512",
     "C:\\Users\\danil\\.nuget\\packages\\microsoft.entityframeworkcore.sqlite.core\\6.0.0\\microsoft.entityframeworkcore.sqlite.core.6.0.0.nupkg.sha512",

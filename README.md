@@ -19,7 +19,9 @@ and can’t be reserved more than 30 days in advance.
 - Every end-user can check the room availability, place a reservation, cancel it or modify it.
 - To simplify the API is insecure.
 
-
+# Definition
 This project is a RestAPI and was developed using .net 6.0, its using EF to save the reservation information on SQLite database.
+Implements the CRUD methos on the BookingController class. 
 
+# Run
 After run, the solution can be tested using Swagger interface on https://localhost:5001/swagger/index.html.
