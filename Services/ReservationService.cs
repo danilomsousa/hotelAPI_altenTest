@@ -11,7 +11,8 @@ namespace HotelApi
     
         public ReservationService(ReservationDbContext context)
         {            
-            _context = context;              
+            _context = context; 
+            _context.Database.EnsureCreated();             
         }
 
         public List<Reservation> GetAll() => Reservations;

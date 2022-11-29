@@ -28,6 +28,19 @@ namespace HotelApi.Controllers
             .ToList();               
         }
 
+        [HttpGet("{id}")]
+        /// <summary>
+        /// This method gets the select reservation.
+        /// </summary>
+        public IActionResult GetReservation(int id)
+        {    
+            var existingReservation = reservationService.Get(id);
+            if(existingReservation is null)
+                return NotFound();
+
+            return Ok(existingReservation);
+        }
+
         [HttpPost]
         /// <summary>
         /// This method creates a new reservation.

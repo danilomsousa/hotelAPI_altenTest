@@ -21,7 +21,7 @@ namespace HotelApi
             get {
                 return _daysCount + (EndDate.Date - StartDate.Date).Days;
             }             
-        }
+        }        
     }
 
     /// <summary>

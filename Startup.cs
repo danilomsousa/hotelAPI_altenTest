@@ -21,8 +21,9 @@ namespace HotelApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {           
-            var connectionString = Configuration.GetConnectionString("Hotel") ?? "Data Source=Hotel.db";            
+            var connectionString = Configuration.GetConnectionString("hotel") ?? "Data Source=hotel.db";            
             services.AddSqlite<ReservationDbContext>(connectionString);            
+            
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
